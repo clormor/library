@@ -1,0 +1,113 @@
+/**
+ * Modal effects inspired by codrops (https://tympanus.net/codrops/).
+ * 
+ * Read more here: http://tympanus.net/codrops/licensing/
+ */
+ 
+:root {
+	--transition-duration: 0.2s;
+	--modal-initial-scale: 0.7;
+	--modal-final-scale: 1;
+}
+
+.modal-background {
+	/** The background takes up the entire window and sits on top of the page*/
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+
+	/**
+	 * Initially hidden (toggled on via button press). We can do this because the
+	 * position is fixed (it it wasn't fixed, setting visibility to false would still
+	 * make space for the modal.
+	 */
+	visibility: hidden;
+	opacity: 0;
+
+	background-color: #444444;
+
+	/** Blur the main content below when shown */
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+}
+
+.modal-container {
+	/** Position the modal relative to the window, not its parent division */
+	position: fixed;
+
+	/**
+	 * Position the modal so that the top-left corner is in the middle of the page.
+	 * This is re-positioned later using a transform.
+	 */
+	top: 50%;
+	left: 50%;
+
+	/** Constrain the width of the modal */
+	width: 50%;
+	max-width: 630px;
+	min-width: 320px;
+
+	height: auto;
+
+	/** Make sure the modal is on top of everything (including the modal background) */
+	z-index: 2000;
+
+	/**
+	 * Initially hidden (toggled on via button press). We can do this because the
+	 * position is fixed (it it wasn't fixed, setting visibility to false would still
+	 * make space for the modal.
+	 */
+	visibility: hidden;
+
+	/** Move the modal up and left by 50%, so that it is centered in the window. */
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+/* The content is initially scaled, and transparent */
+.modal-content {
+	-webkit-transform: scale(var(--modal-initial-scale));
+	-moz-transform: scale(var(--modal-initial-scale));
+	-ms-transform: var(--modal-initial-scale);
+	transform: scale(var(--modal-initial-scale));
+	opacity: 0;
+}
+
+/** When the modal is shown, scale up the modal content and fade it in (increase opacity) */
+.modal-visible .modal-content {
+	-webkit-transform: scale(var(--modal-final-scale));
+	-moz-transform: scale(var(--modal-final-scale));
+	-ms-transform: scale(var(--modal-final-scale));
+	transform: scale(var(--modal-final-scale));
+	opacity: 1;
+}
+
+/**
+ * When the modal effect is triggered, make the modal container visible.
+ * This allows us to view the modal content's transition.
+ */
+.modal-visible {
+	visibility: visible;
+}
+
+/**
+ * When the modal effect has been applied, fade in the background (and make it visible).
+ * This only works if modal-background is a sibling of the modal container and appears
+ * AFTER it in the HTML file.
+ */
+.modal-visible ~ .modal-background {
+	visibility: visible;
+	opacity: 0.8;
+}
+
+/** Transition timing and effects */
+.modal-transitions {
+	-moz-transition-duration: var(--transition-duration);
+	-webkit-transition-duration: var(--transition-duration);
+	transition-duration: var(--transition-duration);
+}

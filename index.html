@@ -1,16 +1,34 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Library</title>
-    <script src="scripts/library.js"></script>
-    <link href="styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/modal.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <div class='main'>
-        <div class='books'></div>
-        <script>displayBooks()</script>
+    <div class='modal-container'>
+        <div class='modal-content modal-transitions'>
+            <p class='form-text'>Hello</p>
+            <p class='form-input'>
+                <label>Something</label>
+                <input>
+            </p>
+            <p class='form-button'>
+                <button class='modal-close'>Hello</button>
+            </p>
+        </div>
     </div>
+    <div class='page-container'>
+        <div class='book-container'>
+            <div class='books'></div>
+            <div class='book-functions'>
+                <button class='modal-show'>Add Book</button>
+            </div>
+        </div>
+    </div>
+    <div class='modal-background modal-transitions'></div>
+    <script src="js/modal.js"></script>
+    <script src="js/library.js"></script>
 </body>
 
 </html>

@@ -22,7 +22,6 @@ function addSomeInitialBooks() {
     addBookToLibrary('The Bible', 'God', 999);
     addBookToLibrary('The Room On The Broom', 'Julia Donaldson', 17, true);
 }
-addSomeInitialBooks();
 
 function displayBooks() {
     let parent = document.querySelector('div .books');
@@ -110,3 +109,6 @@ function deleteBook() {
     // delete the book from the library
     library.splice(deleteIndex, 1);
 }
+
+addSomeInitialBooks();
+displayBooks();
